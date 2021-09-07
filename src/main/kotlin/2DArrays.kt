@@ -6,15 +6,18 @@ fun main(args: Array<String>) {
         arr[i] = readLine()!!.trimEnd().split(" ").map { it.toInt() }.toTypedArray()
     }
 
-    val temp = (0 until 4).flatMap { row -> (0 until 4).map { col -> val sum = computeSum(arr, row, col)
-        sum
-    } }
+    val temp = (0 until 4).flatMap { row ->
+        (0 until 4).map { col ->
+            val sum = computeSum(arr, row, col)
+            sum
+        }
+    }
     println(temp.maxOrNull())
 }
 
-private fun computeSum(arr: Array<Array<Int>>, row: Int, col: Int) =
-    arr[row][col] + arr[row][col + 1] + arr[row][col + 2] +
-            arr[row + 1][col + 1] +
-            arr[row + 2][col] + arr[row + 2][col + 1] + arr[row + 2][col + 2]
+private fun computeSum(arr: Array<Array<Int>>, row: Int, col: Int) : Int {
+    val relativeList = listOf(Pair(0,0), Pair(0,1), Pair(0,2), Pair(1,1), Pair(2,0), Pair(2,1), Pair(2,2))
+    return relativeList.sumOf { i -> arr[row + i.first][col + i.second] }
+}
 
 
