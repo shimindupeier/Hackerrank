@@ -10,7 +10,7 @@ class Node {
     }
 }
 
-class Solution {
+class Solution15 {
     static Node tail = null;
     public static Node insert(Node head, int data) {
 
